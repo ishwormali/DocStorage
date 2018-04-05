@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "339680789621-4765cvh9a507q32e20t8iggid69ekbrc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.docstorage",
+            "certificate_hash": "84940d0680ac138db7bf2a445a47ddc780f39fe5"
+          }
+        },
+        {
           "client_id": "339680789621-ef6lbpg7uv1kpra70n43lg99npbuank3.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339680789621-ef6lbpg7uv1kpra70n43lg99npbuank3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
