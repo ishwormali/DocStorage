@@ -11,7 +11,7 @@ export default class MainHeader extends React.Component{
                     <Text style={styles.headerText}>Doc storage</Text>
                 </View>
                 
-                <Icon name="check-circle" size={80} color="#fff" style={styles.icon} />
+                <Icon name="arrow-circle-right" size={80} color="#fff" style={styles.icon} backgroundColor="#000"  iconStyle={{color:'yellow'}} />
             </View>
         )
     }
@@ -31,10 +31,10 @@ const styles=StyleSheet.create({
         color:'white',
         fontSize:40,
         textAlign:'center',
-        marginTop:80
+        marginTop:60
     },
     icon:{
-        marginTop:-60,
+        marginTop:-65,
         textAlign:'center'
     }
 });

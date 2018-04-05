@@ -40,7 +40,7 @@ export default class LoginView extends React.Component{
                 </View>
                 
                 <View style={styles.body}>
-                    <Icon.Button name="google" backgroundColor="#ff7a00" style={styles.loginButton} onPress={this.loginUsingGoogle}>
+                    <Icon.Button name="google" backgroundColor="#ff7a00" style={styles.loginButton} onPress={this.loginUsingGoogle} >
                                 Login using google
                     </Icon.Button>
                     {/* <View style={styles.loginBox}>
