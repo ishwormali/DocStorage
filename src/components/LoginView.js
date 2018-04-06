@@ -5,31 +5,45 @@ import Colors from '../styles/colors';
 import MainHeader from './MainHeader';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import firebase from 'react-native-firebase';
-// import {GoogleSignin} from 'react-native-google-signin';
+import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 
 export default class LoginView extends React.Component{
-    loginUsingGoogle(){
-        console.log('login using firebase');
-        // GoogleSignin.signIn()
-        //     .then((data)=>{
-        //         const credential=firebase.auth.GoogleAuthProvider.credential(data.idToken,data.accessToken);
-        //         return firebase.auth().signInWithCredential(credential);
-        //     })
-        //     .then((user)=>{
-        //         console.log(user);
-        //     })
-        //     .catch((error)=>{
-        //         const {code,message} = error;
-        //         console.log('error -> ', message);
-        //     })
-        //     ;
-        // firebase.auth()
-        //     .signInAnonymouslyAndRetrieveData()
-        //     .then(credential=>{
-        //         if(credential) {
-        //             console.log('default app user -> ',credential.user.toJSON());
-        //         }
-        //     });
+    constructor(){
+        super();
+        this.state={
+            loading:true
+        }
+        // GoogleSignin.configure({});
+    }
+    async componentDidMount(){
+        console.log('componente did mount');
+        try {
+            const hasPlayServices=await  GoogleSignin.hasPlayServices({autoResolve:true});
+            console.log('has play servicess');
+            await GoogleSignin.configure({
+                webClientId:"339680789621-ef6lbpg7uv1kpra70n43lg99npbuank3.apps.googleusercontent.com",
+                offlineAccess:false});
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
+    componentWillUnmount(){
+        // this.authSubscription();
+
+    }
+    async loginUsingGoogle(){
+        console.log('login using google sign in');
+        try {
+            const data=await GoogleSignin.signIn();
+            console.log('signed in',data);
+            const user = await GoogleSignin.currentUserAsync();
+            console.log('user -> ',user);    
+        } catch (error) {
+            const {code,message} = error;
+            console.log('error -> ', message);
+        }
+
     }
     render(){
         return (
@@ -40,6 +54,14 @@ export default class LoginView extends React.Component{
                 </View>
                 
                 <View style={styles.body}>
+                {/* <GoogleSigninButton
+                    style={{width: 48, height: 48}}
+                    size={GoogleSigninButton.Size.Icon}
+                    color={GoogleSigninButton.Color.Dark}
+                    onPress={this.loginUsingGoogle}
+                    >
+                    
+                    </GoogleSigninButton> */}
                     <Icon.Button name="google" backgroundColor="#ff7a00" style={styles.loginButton} onPress={this.loginUsingGoogle} >
                                 Login using google
                     </Icon.Button>
